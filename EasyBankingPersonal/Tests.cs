@@ -11,6 +11,21 @@ using EasyBankingPersonal.Datenaustausch;
 
 namespace EasyBankingPersonal.TestAustausch.Ablauf
 {
+    /// <summary>
+    /// Klasse zum Testen der abstrakten Klasse 'Produkte'
+    /// </summary>
+    class ProdukteKonkret : Produkte
+    {
+        public ProdukteKonkret(Währung konsumkredite,
+                               Währung autokredite,
+                               Währung hypothekenkredite,
+                               Währung girokonten,
+                               Währung spareinlagen,
+                               Währung termingelder) : base(konsumkredite, autokredite, hypothekenkredite,
+                                                            girokonten, spareinlagen, termingelder)
+        { }
+    }
+
     class Program
     {
         /// <summary>
@@ -266,6 +281,119 @@ namespace EasyBankingPersonal.TestAustausch.Ablauf
             // Test der Konstruktor-Plausibilitätsprüfungen
             ProvokeException(() => new Periode(0, periodeBeginn, PeriodeEnde));
             ProvokeException(() => new Periode(-10, periodeBeginn, PeriodeEnde));
+            #endregion
+
+            #region Klasse Produkte
+            Console.WriteLine("\n\n--- Klasse Produkte ---\n");
+
+            // vorgegebene Werte
+            Währung größeKonsumkredite = 10000.0M;
+            Währung größeAutokredite = 20000.0M;
+            Währung größeHypothekenkredite = 30000.0M;
+            Währung größeGirokonten = 40000.0M;
+            Währung größeSpareinlagen = 50000.0M;
+            Währung größeTermingelder = 60000.0M;
+
+            // Prüfung, ob Klasse abstrakt ist
+            CompareAndPrint(typeof(Produkte).IsAbstract, true);
+
+            // Objekt anlegen
+            ProdukteKonkret produkte = new ProdukteKonkret(größeKonsumkredite,
+                                                           größeAutokredite,
+                                                           größeHypothekenkredite,
+                                                           größeGirokonten,
+                                                           größeSpareinlagen,
+                                                           größeTermingelder);
+
+            // Test auf korrekte Werte der Eigenschaften
+            CompareAndPrint(produkte.Konsumkredite, größeKonsumkredite);
+            CompareAndPrint(produkte.Autokredite, größeAutokredite);
+            CompareAndPrint(produkte.Hypothekenkredite, größeHypothekenkredite);
+            CompareAndPrint(produkte.Girokonten, größeGirokonten);
+            CompareAndPrint(produkte.Spareinlagen, größeSpareinlagen);
+            CompareAndPrint(produkte.Termingelder, größeTermingelder);
+
+            // Test auf Nicht-Änderbarkeit der Eigenschaften
+            CompareAndPrint(produkte.GetType().GetProperty("Konsumkredite").CanWrite, false);
+            CompareAndPrint(produkte.GetType().GetProperty("Autokredite").CanWrite, false);
+            CompareAndPrint(produkte.GetType().GetProperty("Hypothekenkredite").CanWrite, false);
+            CompareAndPrint(produkte.GetType().GetProperty("Girokonten").CanWrite, false);
+            CompareAndPrint(produkte.GetType().GetProperty("Spareinlagen").CanWrite, false);
+            CompareAndPrint(produkte.GetType().GetProperty("Termingelder").CanWrite, false);
+
+            // Test der Konstruktor-Plausibilitätsprüfungen
+            produkte = new ProdukteKonkret(0.0M,
+                                           größeAutokredite,
+                                           größeHypothekenkredite,
+                                           größeGirokonten,
+                                           größeSpareinlagen,
+                                           größeTermingelder);
+            ProvokeException(() => produkte = new ProdukteKonkret(-0.1M,
+                                                                  größeAutokredite,
+                                                                  größeHypothekenkredite,
+                                                                  größeGirokonten,
+                                                                  größeSpareinlagen,
+                                                                  größeTermingelder));
+            produkte = new ProdukteKonkret(größeKonsumkredite,
+                                           0.0M,
+                                           größeHypothekenkredite,
+                                           größeGirokonten,
+                                           größeSpareinlagen,
+                                           größeTermingelder);
+            ProvokeException(() => produkte = new ProdukteKonkret(größeKonsumkredite,
+                                                                  -0.1M,
+                                                                  größeHypothekenkredite,
+                                                                  größeGirokonten,
+                                                                  größeSpareinlagen,
+                                                                  größeTermingelder));
+            produkte = new ProdukteKonkret(größeKonsumkredite,
+                                           größeAutokredite,
+                                           0.0M,
+                                           größeGirokonten,
+                                           größeSpareinlagen,
+                                           größeTermingelder);
+            ProvokeException(() => produkte = new ProdukteKonkret(größeKonsumkredite,
+                                                                  größeAutokredite,
+                                                                  -0.1M,
+                                                                  größeGirokonten,
+                                                                  größeSpareinlagen,
+                                                                  größeTermingelder));
+            produkte = new ProdukteKonkret(größeKonsumkredite,
+                                           größeAutokredite,
+                                           größeHypothekenkredite,
+                                           0.0M,
+                                           größeSpareinlagen,
+                                           größeTermingelder);
+            ProvokeException(() => produkte = new ProdukteKonkret(größeKonsumkredite,
+                                                                  größeAutokredite,
+                                                                  größeHypothekenkredite,
+                                                                  -0.1M,
+                                                                  größeSpareinlagen,
+                                                                  größeTermingelder));
+            produkte = new ProdukteKonkret(größeKonsumkredite,
+                                           größeAutokredite,
+                                           größeHypothekenkredite,
+                                           größeGirokonten,
+                                           0.0M,
+                                           größeTermingelder);
+            ProvokeException(() => produkte = new ProdukteKonkret(größeKonsumkredite,
+                                                                  größeAutokredite,
+                                                                  größeHypothekenkredite,
+                                                                  größeGirokonten,
+                                                                  -0.1M,
+                                                                  größeTermingelder));
+            produkte = new ProdukteKonkret(größeKonsumkredite,
+                                           größeAutokredite,
+                                           größeHypothekenkredite,
+                                           größeGirokonten,
+                                           größeSpareinlagen,
+                                           0.0M);
+            ProvokeException(() => produkte = new ProdukteKonkret(größeKonsumkredite,
+                                                                  größeAutokredite,
+                                                                  größeHypothekenkredite,
+                                                                  größeGirokonten,
+                                                                  größeSpareinlagen,
+                                                                  -0.1M));
             #endregion
 
             Console.WriteLine("\n\n--- ERGEBNIS ---\n");
