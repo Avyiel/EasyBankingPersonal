@@ -3,9 +3,10 @@
 // Konsolenanwendung
 
 // nächste Zeile auskommentieren für reinen Fehlerzähler ohne Ausnahme
-#define EXCEPTION
+//#define EXCEPTION
 
 using System;
+using System.Text;
 using EasyBankingPersonal.Datenaustausch;
 
 namespace EasyBankingPersonal.TestAustausch.Ablauf
@@ -166,6 +167,8 @@ namespace EasyBankingPersonal.TestAustausch.Ablauf
         /// </summary>
         static void Main()
         {
+            Console.OutputEncoding = Encoding.UTF8;
+
             #region Klasse Prozent
             Console.WriteLine("\n\n--- Klasse Prozent ---\n");
 
@@ -200,6 +203,39 @@ namespace EasyBankingPersonal.TestAustausch.Ablauf
 
             // Test der drei aus 'object' ererbten überschreibbaren Methoden
             object[] objekte = new object[] { p1, p2, new Prozent(0.5) };
+            ObjectTest(objekte);
+            #endregion
+
+            #region Klasse Währung
+            Console.WriteLine("\n\n--- Klasse Währung ---\n");
+
+            // vorgegeben Werte
+            decimal wk = 40000000.0M;
+            string wks1 = "40.000.000,00 €";
+            string wks2 = "40.000 T€";
+            string wks3 = "40 Mio€";
+            decimal wk1 = 10.009M;
+            decimal wk2 = 10.01M;
+
+            // Objekte anlegen, Prüfung der impliziten Konvertierung decimal -> Währung
+            Währung w1 = new Währung(wk);
+            Währung w2 = wk;
+            Währung w3 = wk1;
+
+            // Eigenschaft prüfen, Prüfung der impliziten Konvertierung Währung -> decimal
+            CompareAndPrint(w1.Betrag, wk);
+            CompareAndPrint(w1 + 0.0M, wk);
+            CompareAndPrint(w2 + 0.0M, wk);
+            CompareAndPrint(w3 + 0.0M, wk2);
+
+            // Test auf überschriebenes 'ToString'
+            CompareAndPrint(typeof(Währung).GetMethod("ToString").DeclaringType, typeof(Währung));
+            CompareAndPrint(w1.ToString(), wks1);
+            CompareAndPrint(w1.ToTausenderString(), wks2);
+            CompareAndPrint(w1.ToMillionenString(), wks3);
+
+            // Test der drei aus 'object' ererbten überschreibbaren Methoden
+            objekte = new object[] { w1, w2, new Währung(100.0M) };
             ObjectTest(objekte);
             #endregion
 
