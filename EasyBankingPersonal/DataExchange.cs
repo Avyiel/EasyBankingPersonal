@@ -117,17 +117,25 @@ namespace EasyBankingPersonal.Datenaustausch
         /// <summary>
         /// Printable representation of the currency's amount.
         /// </summary>
-        /// <returns>Currency with 2 decimal digit in the de_DE locale.</returns>
+        /// <returns>Amount with 2 decimal digit in Euros.</returns>
         public override string ToString()
         {
             return Betrag.ToString("C2", CultureInfo.CreateSpecificCulture("de-DE"));
         }
 
+        /// <summary>
+        /// Printable representation of the currency's amount as thousands.
+        /// </summary>
+        /// <returns>Integer amount in thousands of Euros.</returns>
         public string ToTausenderString()
         {
             return $"{Math.Round(Betrag / 1000, 0, MidpointRounding.AwayFromZero).ToString("N0", CultureInfo.CreateSpecificCulture("de-DE"))} T€";
         }
 
+        /// <summary>
+        /// Printable representation of the currency's amount as thousands.
+        /// </summary>
+        /// <returns>Integer amount in millions of Euros.</returns>
         public string ToMillionenString()
         {
             return $"{Math.Round(Betrag / 1000000, 0, MidpointRounding.AwayFromZero).ToString()} Mio€";
