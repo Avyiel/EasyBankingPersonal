@@ -396,6 +396,216 @@ namespace EasyBankingPersonal.TestAustausch.Ablauf
                                                                   -0.1M));
             #endregion
 
+            #region Klasse Durchschnittsgrößen
+            Console.WriteLine("\n\n--- Klasse Durchschnittsgrößen ---\n");
+
+            // Prüfung: ist 'Produkte' Oberklasse?
+            CompareAndPrint(typeof(Durchschnittsgrößen).BaseType, typeof(Produkte));
+
+            // Objekt anlegen
+            Durchschnittsgrößen durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                                              größeAutokredite,
+                                                                              größeHypothekenkredite,
+                                                                              größeGirokonten,
+                                                                              größeSpareinlagen,
+                                                                              größeTermingelder);
+
+            // Test auf korrekte Werte der Eigenschaften
+            CompareAndPrint(durchschnittsgrößen.Konsumkredite, größeKonsumkredite);
+            CompareAndPrint(durchschnittsgrößen.Autokredite, größeAutokredite);
+            CompareAndPrint(durchschnittsgrößen.Hypothekenkredite, größeHypothekenkredite);
+            CompareAndPrint(durchschnittsgrößen.Girokonten, größeGirokonten);
+            CompareAndPrint(durchschnittsgrößen.Spareinlagen, größeSpareinlagen);
+            CompareAndPrint(durchschnittsgrößen.Termingelder, größeTermingelder);
+
+            // Test auf Nicht-Änderbarkeit der Eigenschaften
+            CompareAndPrint(durchschnittsgrößen.GetType().GetProperty("Konsumkredite").CanWrite, false);
+            CompareAndPrint(durchschnittsgrößen.GetType().GetProperty("Autokredite").CanWrite, false);
+            CompareAndPrint(durchschnittsgrößen.GetType().GetProperty("Hypothekenkredite").CanWrite, false);
+            CompareAndPrint(durchschnittsgrößen.GetType().GetProperty("Girokonten").CanWrite, false);
+            CompareAndPrint(durchschnittsgrößen.GetType().GetProperty("Spareinlagen").CanWrite, false);
+            CompareAndPrint(durchschnittsgrößen.GetType().GetProperty("Termingelder").CanWrite, false);
+
+            // Test der Konstruktor-Plausibilitätsprüfungen
+            durchschnittsgrößen = new Durchschnittsgrößen(0.01M,
+                                                          größeAutokredite,
+                                                          größeHypothekenkredite,
+                                                          größeGirokonten,
+                                                          größeSpareinlagen,
+                                                          größeTermingelder);
+            ProvokeException(() => durchschnittsgrößen = new Durchschnittsgrößen(0.0M,
+                                                                                 größeAutokredite,
+                                                                                 größeHypothekenkredite,
+                                                                                 größeGirokonten,
+                                                                                 größeSpareinlagen,
+                                                                                 größeTermingelder));
+            durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                          0.01M,
+                                                          größeHypothekenkredite,
+                                                          größeGirokonten,
+                                                          größeSpareinlagen,
+                                                          größeTermingelder);
+            ProvokeException(() => durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                                                 0.0M,
+                                                                                 größeHypothekenkredite,
+                                                                                 größeGirokonten,
+                                                                                 größeSpareinlagen,
+                                                                                 größeTermingelder));
+            durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                          größeAutokredite,
+                                                          0.01M,
+                                                          größeGirokonten,
+                                                          größeSpareinlagen,
+                                                          größeTermingelder);
+            ProvokeException(() => durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                                                 größeAutokredite,
+                                                                                 0.0M,
+                                                                                 größeGirokonten,
+                                                                                 größeSpareinlagen,
+                                                                                 größeTermingelder));
+            durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                          größeAutokredite,
+                                                          größeHypothekenkredite,
+                                                          0.01M,
+                                                          größeSpareinlagen,
+                                                          größeTermingelder);
+            ProvokeException(() => durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                                                 größeAutokredite,
+                                                                                 größeHypothekenkredite,
+                                                                                 0.0M,
+                                                                                 größeSpareinlagen,
+                                                                                 größeTermingelder));
+            durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                          größeAutokredite,
+                                                          größeHypothekenkredite,
+                                                          größeGirokonten,
+                                                          0.01M,
+                                                          größeTermingelder);
+            ProvokeException(() => durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                                                 größeAutokredite,
+                                                                                 größeHypothekenkredite,
+                                                                                 größeGirokonten,
+                                                                                 0.0M,
+                                                                                 größeTermingelder));
+            durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                          größeAutokredite,
+                                                          größeHypothekenkredite,
+                                                          größeGirokonten,
+                                                          größeSpareinlagen,
+                                                          0.01M);
+            ProvokeException(() => durchschnittsgrößen = new Durchschnittsgrößen(größeKonsumkredite,
+                                                                                 größeAutokredite,
+                                                                                 größeHypothekenkredite,
+                                                                                 größeGirokonten,
+                                                                                 größeSpareinlagen,
+                                                                                 0.0M));
+            #endregion
+
+            #region Klasse VolumenNeugeschäft
+            Console.WriteLine("\n\n--- Klasse VolumenNeugeschäft ---\n");
+
+            // Prüfung: ist 'Produkte' Oberklasse?
+            CompareAndPrint(typeof(Durchschnittsgrößen).BaseType, typeof(Produkte));
+
+            // Objekt anlegen
+            VolumenNeugeschäft volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                                           größeAutokredite,
+                                                                           größeHypothekenkredite,
+                                                                           größeGirokonten,
+                                                                           größeSpareinlagen,
+                                                                           größeTermingelder);
+
+            // Test auf korrekte Werte der Eigenschaften
+            CompareAndPrint(volumenNeugeschäft.Konsumkredite, größeKonsumkredite);
+            CompareAndPrint(volumenNeugeschäft.Autokredite, größeAutokredite);
+            CompareAndPrint(volumenNeugeschäft.Hypothekenkredite, größeHypothekenkredite);
+            CompareAndPrint(volumenNeugeschäft.Girokonten, größeGirokonten);
+            CompareAndPrint(volumenNeugeschäft.Spareinlagen, größeSpareinlagen);
+            CompareAndPrint(volumenNeugeschäft.Termingelder, größeTermingelder);
+
+            // Test auf Nicht-Änderbarkeit der Eigenschaften
+            CompareAndPrint(volumenNeugeschäft.GetType().GetProperty("Konsumkredite").CanWrite, false);
+            CompareAndPrint(volumenNeugeschäft.GetType().GetProperty("Autokredite").CanWrite, false);
+            CompareAndPrint(volumenNeugeschäft.GetType().GetProperty("Hypothekenkredite").CanWrite, false);
+            CompareAndPrint(volumenNeugeschäft.GetType().GetProperty("Girokonten").CanWrite, false);
+            CompareAndPrint(volumenNeugeschäft.GetType().GetProperty("Spareinlagen").CanWrite, false);
+            CompareAndPrint(volumenNeugeschäft.GetType().GetProperty("Termingelder").CanWrite, false);
+
+            // Test der Konstruktor-Plausibilitätsprüfungen
+            volumenNeugeschäft = new VolumenNeugeschäft(0.0M,
+                                                        größeAutokredite,
+                                                        größeHypothekenkredite,
+                                                        größeGirokonten,
+                                                        größeSpareinlagen,
+                                                        größeTermingelder);
+            ProvokeException(() => volumenNeugeschäft = new VolumenNeugeschäft(-0.1M,
+                                                                               größeAutokredite,
+                                                                               größeHypothekenkredite,
+                                                                               größeGirokonten,
+                                                                               größeSpareinlagen,
+                                                                               größeTermingelder));
+            volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                        0.0M,
+                                                        größeHypothekenkredite,
+                                                        größeGirokonten,
+                                                        größeSpareinlagen,
+                                                        größeTermingelder);
+            ProvokeException(() => volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                                               -0.1M,
+                                                                               größeHypothekenkredite,
+                                                                               größeGirokonten,
+                                                                               größeSpareinlagen,
+                                                                               größeTermingelder));
+            volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                        größeAutokredite,
+                                                        0.0M,
+                                                        größeGirokonten,
+                                                        größeSpareinlagen,
+                                                        größeTermingelder);
+            ProvokeException(() => volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                                               größeAutokredite,
+                                                                               -0.1M,
+                                                                               größeGirokonten,
+                                                                               größeSpareinlagen,
+                                                                               größeTermingelder));
+            volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                        größeAutokredite,
+                                                        größeHypothekenkredite,
+                                                        0.0M,
+                                                        größeSpareinlagen,
+                                                        größeTermingelder);
+            ProvokeException(() => volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                                               größeAutokredite,
+                                                                               größeHypothekenkredite,
+                                                                               -0.1M,
+                                                                               größeSpareinlagen,
+                                                                               größeTermingelder));
+            volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                        größeAutokredite,
+                                                        größeHypothekenkredite,
+                                                        größeGirokonten,
+                                                        0.0M,
+                                                        größeTermingelder);
+            ProvokeException(() => volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                                               größeAutokredite,
+                                                                               größeHypothekenkredite,
+                                                                               größeGirokonten,
+                                                                               -0.1M,
+                                                                               größeTermingelder));
+            volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                        größeAutokredite,
+                                                        größeHypothekenkredite,
+                                                        größeGirokonten,
+                                                        größeSpareinlagen,
+                                                        0.0M);
+            ProvokeException(() => volumenNeugeschäft = new VolumenNeugeschäft(größeKonsumkredite,
+                                                                               größeAutokredite,
+                                                                               größeHypothekenkredite,
+                                                                               größeGirokonten,
+                                                                               größeSpareinlagen,
+                                                                               -0.1M));
+            #endregion
+
             Console.WriteLine("\n\n--- ERGEBNIS ---\n");
 
             if (_errors > 0)

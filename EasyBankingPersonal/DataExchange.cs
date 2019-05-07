@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace EasyBankingPersonal.Datenaustausch
 {
@@ -262,6 +260,62 @@ namespace EasyBankingPersonal.Datenaustausch
             Konsumkredite = konsumkredite;
             Spareinlagen = spareinlagen;
             Termingelder = termingelder;
+        }
+    }
+
+    /// <summary>
+    /// Object reference for one row of the "Durchschnittsgrößen" table.
+    /// </summary>
+    public class Durchschnittsgrößen : Produkte
+    {
+        public Durchschnittsgrößen(
+            Währung konsumkredite,
+            Währung autokredite,
+            Währung hypothekenkredite,
+            Währung girokonten,
+            Währung spareinlagen,
+            Währung termingelder) : base(konsumkredite, autokredite, hypothekenkredite,
+                                         girokonten, spareinlagen, termingelder)
+        {
+            if (
+                konsumkredite <= 0 ||
+                autokredite <= 0 ||
+                hypothekenkredite <= 0 ||
+                girokonten <= 0 ||
+                spareinlagen <= 0 ||
+                termingelder <= 0
+            )
+            {
+                throw new Exception("One of the given values is negative.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Object reference for one row of the "VolumenNeugeschäft" table.
+    /// </summary>
+    public class VolumenNeugeschäft : Produkte
+    {
+        public VolumenNeugeschäft(
+            Währung konsumkredite,
+            Währung autokredite,
+            Währung hypothekenkredite,
+            Währung girokonten,
+            Währung spareinlagen,
+            Währung termingelder) : base(konsumkredite, autokredite, hypothekenkredite,
+                                         girokonten, spareinlagen, termingelder)
+        {
+            if (
+                konsumkredite < 0 ||
+                autokredite < 0 ||
+                hypothekenkredite < 0 ||
+                girokonten < 0 ||
+                spareinlagen < 0 ||
+                termingelder < 0
+            )
+            {
+                throw new Exception("One of the given values is negative.");
+            }
         }
     }
     #endregion
