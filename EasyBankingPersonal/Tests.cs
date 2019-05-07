@@ -239,6 +239,35 @@ namespace EasyBankingPersonal.TestAustausch.Ablauf
             ObjectTest(objekte);
             #endregion
 
+            #region Klasse Periode
+            Console.WriteLine("\n\n--- Klasse Periode ---\n");
+
+            // vorgegebene Werte
+            const int periodeNummer = 5;
+            DateTime periodeBeginn = new DateTime(2017, 10, 1);
+            DateTime PeriodeEnde = new DateTime(2018, 9, 30);
+
+            // Objekt anlegen
+            Periode periode = new Periode(periodeNummer, periodeBeginn, PeriodeEnde);
+
+            // Test auf korrekte Werte der Eigenschaften
+            CompareAndPrint(periode.Nummer, periodeNummer);
+            CompareAndPrint(periode.Beginn, periodeBeginn);
+            CompareAndPrint(periode.Ende, PeriodeEnde);
+
+            // Test auf Nicht-Änderbarkeit der Eigenschaften
+            CompareAndPrint(periode.GetType().GetProperty("Nummer").CanWrite, false);
+            CompareAndPrint(periode.GetType().GetProperty("Beginn").CanWrite, false);
+            CompareAndPrint(periode.GetType().GetProperty("Ende").CanWrite, false);
+
+            // Test auf überschriebenes 'ToString'
+            CompareAndPrint(periode.GetType().GetMethod("ToString").DeclaringType, typeof(Periode));
+
+            // Test der Konstruktor-Plausibilitätsprüfungen
+            ProvokeException(() => new Periode(0, periodeBeginn, PeriodeEnde));
+            ProvokeException(() => new Periode(-10, periodeBeginn, PeriodeEnde));
+            #endregion
+
             Console.WriteLine("\n\n--- ERGEBNIS ---\n");
 
             if (_errors > 0)
