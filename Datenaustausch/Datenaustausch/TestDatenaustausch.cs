@@ -1,14 +1,10 @@
-﻿// Program_TEST_Datenaustausch.cs (zu Hausaufgabe 19S)
+﻿// TestDatenaustausch.cs (zu Hausaufgabe 19S)
 // Test des Namensraums 'Datenaustausch'
 // Konsolenanwendung
 
-// nächste Zeile auskommentieren für reinen Fehlerzähler ohne Ausnahme
-// #define EXCEPTION
-
 using System;
-using EasyBankingPersonal.Datenaustausch;
 
-namespace EasyBankingPersonal.TestAustausch.Ablauf
+namespace EasyBankingPersonal.Datenaustausch
 {
     /// <summary>
     /// Klasse zum Testen der abstrakten Klasse 'Produkte'
@@ -25,7 +21,7 @@ namespace EasyBankingPersonal.TestAustausch.Ablauf
         { }
     }
 
-    class Program
+    static class DatenaustauschTest
     {
         /// <summary>
         /// Anzahl der gefundenen Fehler
@@ -56,9 +52,6 @@ namespace EasyBankingPersonal.TestAustausch.Ablauf
             if (color == _bad_color)
             {
                 _errors++;
-#if EXCEPTION
-                throw new Exception();
-#endif
             }
         }
 
@@ -179,8 +172,10 @@ namespace EasyBankingPersonal.TestAustausch.Ablauf
         /// <summary>
         /// Hauptmethode
         /// </summary>
-        static void Main()
+        public static void Run()
         {
+            Console.WriteLine("\n\n----- Datenaustausch -----\n");
+
             #region Klasse Periode
             Console.WriteLine("\n\n--- Klasse Periode ---\n");
 
@@ -987,5 +982,7 @@ namespace EasyBankingPersonal.TestAustausch.Ablauf
 
             Console.ReadKey();
         }
+
+
     }
 }

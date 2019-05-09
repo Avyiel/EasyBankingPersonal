@@ -8,3 +8,9 @@ C:\Users\lmvie\source\repos\EasyBankingPersonal\EasyBankingPersonal\obj\Debug\ne
 C:\Users\lmvie\source\repos\EasyBankingPersonal\EasyBankingPersonal\obj\Debug\netcoreapp2.1\EasyBankingPersonal.AssemblyInfo.cs
 C:\Users\lmvie\source\repos\EasyBankingPersonal\EasyBankingPersonal\obj\Debug\netcoreapp2.1\EasyBankingPersonal.dll
 C:\Users\lmvie\source\repos\EasyBankingPersonal\EasyBankingPersonal\obj\Debug\netcoreapp2.1\EasyBankingPersonal.pdb
+C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcoreapp2.1\EasyBankingPersonal.csprojAssemblyReference.cache
+C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcoreapp2.1\EasyBankingPersonal.csproj.CoreCompileInputs.cache
+C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcoreapp2.1\EasyBankingPersonal.AssemblyInfoInputs.cache
+C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcoreapp2.1\EasyBankingPersonal.AssemblyInfo.cs
+C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcoreapp2.1\EasyBankingPersonal.dll
+C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcoreapp2.1\EasyBankingPersonal.pdb
