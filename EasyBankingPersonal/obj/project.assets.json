@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lmvie\\source\\repos\\EasyBankingPersonal\\Datenhaltung\\Datenhaltung.csproj",
-      "projectName": "Datenhaltung",
-      "projectPath": "C:\\Users\\lmvie\\source\\repos\\EasyBankingPersonal\\Datenhaltung\\Datenhaltung.csproj",
+      "projectUniqueName": "C:\\Users\\lmvie\\source\\repos\\EasyBankingPersonal\\EasyBankingPersonal\\EasyBankingPersonal.csproj",
+      "projectName": "EasyBankingPersonal",
+      "projectPath": "C:\\Users\\lmvie\\source\\repos\\EasyBankingPersonal\\EasyBankingPersonal\\EasyBankingPersonal.csproj",
       "packagesPath": "C:\\Users\\lmvie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lmvie\\source\\repos\\EasyBankingPersonal\\Datenhaltung\\obj\\",
+      "outputPath": "C:\\Users\\lmvie\\source\\repos\\EasyBankingPersonal\\EasyBankingPersonal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

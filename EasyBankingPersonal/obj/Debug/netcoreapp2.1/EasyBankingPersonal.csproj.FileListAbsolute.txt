@@ -14,3 +14,4 @@ C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcore
 C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcoreapp2.1\EasyBankingPersonal.AssemblyInfo.cs
 C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcoreapp2.1\EasyBankingPersonal.dll
 C:\Users\lmvie\source\repos\EasyBankingPersonal\Datenaustausch\obj\Debug\netcoreapp2.1\EasyBankingPersonal.pdb
+C:\Users\lmvie\source\repos\EasyBankingPersonal\EasyBankingPersonal\obj\Debug\netcoreapp2.1\EasyBankingPersonal.csprojAssemblyReference.cache
