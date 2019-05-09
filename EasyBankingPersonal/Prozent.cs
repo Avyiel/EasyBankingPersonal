@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ===============================
+// AUTOR:    Lucas Vienna
+// MATRIKEL: 64700
+// ===============================
+using System;
 using System.Globalization;
 
 namespace EasyBankingPersonal.Datenaustausch
